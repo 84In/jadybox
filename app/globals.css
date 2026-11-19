@@ -1,26 +1,103 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import "shadcn/tailwind.css";
 
 @theme inline {
+  /* 1. Font chữ */
+  --font-sans: var(--font-quicksand), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
+
+  /* 2. Bảng màu thương hiệu Jady (Hồng Pastel -> Đỏ mận) */
+  --color-nail-50: #fff5f7;   /* Nền web: Hồng kem siêu nhạt, dịu mắt */
+  --color-nail-100: #ffe4ea;  /* Nền phụ, badge, tag */
+  --color-nail-200: #fecdd9;  /* Viền card, đường kẻ phân cách */
+  --color-nail-300: #fda4ba;  /* Hover nhẹ, nhấn phụ */
+  --color-nail-400: #fb7194;  /* Icon nổi bật, text nhấn */
+  --color-nail-500: #ec4876;  /* Màu chủ đạo (Nút bấm chính) */
+  --color-nail-600: #d62f60;  /* Nút chính khi hover */
+  --color-nail-700: #b41f4c;
+  --color-nail-900: #83183b;  /* Tiêu đề phụ, text đậm */
+  --color-nail-950: #4c0a21;  /* Chữ chính (thay màu đen cứng) */
+
+  /* 3. Màu trung tính ấm (Be / Nude) để phối cùng hồng */
+  --color-nude-50: #fdfbf9;
+  --color-nude-100: #f7f1ec;
+
+  /* 4. Map biến hệ thống cho shadcn/ui */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* 5. Độ bo góc & Đổ bóng mềm */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --shadow-soft: 0 8px 30px -12px rgba(236, 72, 118, 0.16);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: #fff5f7;
+  --foreground: #4c0a21;
+
+  --card: #ffffff;
+  --card-foreground: #4c0a21;
+
+  --popover: #ffffff;
+  --popover-foreground: #4c0a21;
+
+  --primary: #ec4876;
+  --primary-foreground: #ffffff;
+
+  --secondary: #ffe4ea;
+  --secondary-foreground: #83183b;
+
+  --muted: #ffe4ea;
+  --muted-foreground: #9d4460;
+
+  --accent: #fecdd9;
+  --accent-foreground: #83183b;
+
+  --destructive: #e11d48;
+
+  --border: #fecdd9;
+  --input: #fecdd9;
+  --ring: #ec4876;
+
+  --radius: 0.875rem; /* 14px - bo góc mềm, nữ tính */
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Thanh cuộn tinh tế theo tone hồng */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-nail-50);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-nail-200);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-nail-300);
+  }
 }
